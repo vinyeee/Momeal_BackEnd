@@ -13,7 +13,6 @@ import javax.persistence.*;
 public class MenuEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "menu_id")
     private Long id;
 
     private String title;

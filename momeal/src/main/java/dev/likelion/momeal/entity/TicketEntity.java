@@ -13,7 +13,6 @@ import javax.persistence.*;
 public class TicketEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ticket_id")
     private Long id;
 
     private int price;
