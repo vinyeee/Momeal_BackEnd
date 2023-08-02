@@ -22,14 +22,12 @@ public class TicketEntity extends BaseEntity {
             targetEntity = OrderEntity.class,
             fetch = FetchType.LAZY
     )
-    @Column(name = "order_id")
     private OrderEntity orderEntity;
 
     @ManyToOne(
             targetEntity = CartEntity.class,
             fetch = FetchType.LAZY
     )
-    @Column(name = "cart_id")
     private CartEntity cartEntity;
 
 }

@@ -33,7 +33,6 @@ public class OrderEntity extends BaseEntity{
             targetEntity = UserEntity.class,
             fetch = FetchType.LAZY
     )
-    @Column(name = "user_id")
     private UserEntity userEntity;
 
 
