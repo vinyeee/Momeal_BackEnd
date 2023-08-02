@@ -6,6 +6,7 @@ import lombok.Setter;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,10 +22,18 @@ public class CartEntity extends BaseEntity{
 
     private int amount;
 
-    @OneToMany
-    private List<TicketEntity> ticket;
+    @OneToMany(
+            targetEntity = TicketEntity.class,
+            fetch = FetchType.LAZY,
+            mappedBy = "cartEntity"
+    )
+    private List<TicketEntity> ticketEntityList = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private UserEntity user;
+    @ManyToOne(
+            targetEntity = UserEntity.class,
+            fetch = FetchType.LAZY
+    )
+    @Column(name = "user_id")
+    private UserEntity userEntity;
 
 }

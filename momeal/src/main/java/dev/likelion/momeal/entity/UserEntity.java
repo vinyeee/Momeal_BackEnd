@@ -15,6 +15,7 @@ import java.util.List;
 public class UserEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
 
     private String user_name;
@@ -26,14 +27,14 @@ public class UserEntity extends BaseEntity {
     @OneToMany(
             targetEntity = OrderEntity.class,
             fetch = FetchType.LAZY,
-            mappedBy = "orderEntity"
+            mappedBy = "userEntity"
     )
     private List<OrderEntity> orderEntityList = new ArrayList<>();
 
     @OneToMany(
             targetEntity = CartEntity.class,
             fetch = FetchType.LAZY,
-            mappedBy = "cartEntity"
+            mappedBy = "userEntity"
     )
     private List<CartEntity> cartEntityList = new ArrayList<>();
 }

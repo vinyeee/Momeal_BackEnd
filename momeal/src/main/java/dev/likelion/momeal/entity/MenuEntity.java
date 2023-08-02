@@ -13,6 +13,7 @@ import javax.persistence.*;
 public class MenuEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "menu_id")
     private Long id;
 
     private String title;
@@ -24,5 +25,6 @@ public class MenuEntity extends BaseEntity{
             targetEntity = UserEntity.class,
             fetch = FetchType.LAZY
     )
+    @Column(name = "user_id")
     private UserEntity userEntity;
 }

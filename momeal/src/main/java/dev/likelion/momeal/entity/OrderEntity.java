@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,18 +17,24 @@ import java.util.List;
 public class OrderEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id", nullable = false)
+    @Column(name = "order_id")
     private Long id;
     private int amount;
     private Instant date;
 
-    @OneToMany
-    @JoinColumn(name="ticket_id")
-    private List<TicketEntity> ticket;
+    @OneToMany(
+            targetEntity = TicketEntity.class,
+            fetch = FetchType.LAZY,
+            mappedBy = "orderEntity"
+    )
+    private List<TicketEntity> ticketEntityList = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id")
-    private UserEntity user;
+    @ManyToOne(
+            targetEntity = UserEntity.class,
+            fetch = FetchType.LAZY
+    )
+    @Column(name = "user_id")
+    private UserEntity userEntity;
 
 
 }
