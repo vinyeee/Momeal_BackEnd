@@ -1,4 +1,7 @@
 package dev.likelion.momeal.repository;
 
-public interface OrderRepository {
+import dev.likelion.momeal.entity.OrderEntity;
+import org.springframework.data.repository.CrudRepository;
+
+public interface OrderRepository extends CrudRepository<OrderEntity, Long> {
 }
