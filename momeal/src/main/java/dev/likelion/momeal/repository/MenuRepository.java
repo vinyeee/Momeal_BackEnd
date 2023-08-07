@@ -1,4 +1,6 @@
 package dev.likelion.momeal.repository;
 
-public interface MenuRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface MenuRepository extends CrudRepository<MenuRepository, Long> {
 }
