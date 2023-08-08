@@ -42,11 +42,11 @@ public class MenuDao {
         return menuEntity.get();
     }
 
-    public Iterator<MenuEntity> readPostAll() {
+    public Iterator<MenuEntity> readMenuAll() {
         return this.menuRepository.findAll().iterator();
     }
 
-    public void updatePost(int id, MenuDto dto) {
+    public void updateMenu(int id, MenuDto dto) {
         Optional<MenuEntity> targetEntity = menuRepository.findById(Long.valueOf(id));
         if(targetEntity.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -59,7 +59,7 @@ public class MenuDao {
         this.menuRepository.save(menuEntity);
     }
 
-    public void deletePost(int id) {
+    public void deleteMenu(int id) {
         Optional<MenuEntity> targetEntity = this.menuRepository.findById((long) id);
         if(targetEntity.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
