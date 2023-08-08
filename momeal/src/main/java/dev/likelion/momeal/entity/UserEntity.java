@@ -17,11 +17,11 @@ public class UserEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String user_name;
-    private String user_id;
-    private String user_pw;
-    private String user_email;
-    private Boolean user_role;
+    private String username; // 사용자 이름
+    private String userid; // 사용자 아이디
+    private String password; // 사용자 비밀번호
+    private String email; // 사용자 이메일
+    private Boolean role; // 관리자 여부
 
     @OneToMany(
             targetEntity = OrderEntity.class,
