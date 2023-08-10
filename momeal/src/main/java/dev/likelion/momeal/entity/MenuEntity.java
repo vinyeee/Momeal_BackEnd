@@ -19,10 +19,5 @@ public class MenuEntity extends BaseEntity{
     private int price;
     private String picture;
     private int amount;
-
-    @ManyToOne(
-            targetEntity = UserEntity.class,
-            fetch = FetchType.LAZY
-    )
-    private UserEntity userEntity;
+    private String restaurant;
 }

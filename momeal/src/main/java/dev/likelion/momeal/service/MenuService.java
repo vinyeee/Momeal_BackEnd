@@ -35,7 +35,7 @@ public class MenuService {
                 menuEntity.getPrice(),
                 menuEntity.getPicture(),
                 menuEntity.getAmount(),
-                menuEntity.getUserEntity() == null ? 0 : Math.toIntExact(menuEntity.getUserEntity().getId())
+                menuEntity.getRestaurant()
         );
     }
 
@@ -51,7 +51,7 @@ public class MenuService {
                     menuEntity.getPrice(),
                     menuEntity.getPicture(),
                     menuEntity.getAmount(),
-                    menuEntity.getUserEntity() == null ? 0 : Math.toIntExact(menuEntity.getUserEntity().getId())
+                    menuEntity.getRestaurant()
             ));
         }
         return menuDtoList;

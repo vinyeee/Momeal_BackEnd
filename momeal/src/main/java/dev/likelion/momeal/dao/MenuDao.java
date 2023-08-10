@@ -30,7 +30,7 @@ public class MenuDao {
         menuEntity.setPrice(dto.getPrice());
         menuEntity.setPicture(dto.getPicture());
         menuEntity.setAmount(dto.getAmount());
-        menuEntity.setUserEntity(null);
+        menuEntity.setRestaurant(dto.getRestaurant());
         this.menuRepository.save(menuEntity);
     }
 
@@ -56,6 +56,7 @@ public class MenuDao {
         menuEntity.setPrice(Integer.valueOf(dto.getPrice()) == null ? menuEntity.getPrice() : dto.getPrice());
         menuEntity.setPicture(dto.getPicture() == null ? menuEntity.getPicture() : dto.getPicture());
         menuEntity.setAmount(Integer.valueOf(dto.getAmount()) == null ? menuEntity.getAmount() : dto.getAmount());
+        menuEntity.setRestaurant(dto.getRestaurant() == null ? menuEntity.getRestaurant() : dto.getRestaurant());
         this.menuRepository.save(menuEntity);
     }
 

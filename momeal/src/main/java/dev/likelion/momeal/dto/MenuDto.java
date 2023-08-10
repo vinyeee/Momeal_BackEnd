@@ -6,26 +6,18 @@ public class MenuDto {
     private int price;
     private String picture;
     private int amount;
-    private int boardId;
+    private String restaurant;
 
     public MenuDto() {
     }
 
-    public MenuDto(Long id, String title, int price, String picture, int amount, int boardId) {
+    public MenuDto(Long id, String title, int price, String picture, int amount, String restaurant) {
         this.id = id;
         this.title = title;
         this.price = price;
         this.picture = picture;
         this.amount = amount;
-        this.boardId = boardId;
-    }
-
-    public int getBoardId() {
-        return boardId;
-    }
-
-    public void setBoardId(int boardId) {
-        this.boardId = boardId;
+        this.restaurant = restaurant;
     }
 
     public Long getId() {
@@ -68,6 +60,14 @@ public class MenuDto {
         this.amount = amount;
     }
 
+    public String getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(String restaurant) {
+        this.restaurant = restaurant;
+    }
+
     @Override
     public String toString() {
         return "MenuDto{" +
@@ -76,7 +76,7 @@ public class MenuDto {
                 ", price=" + price +
                 ", picture='" + picture + '\'' +
                 ", amount=" + amount +
-                ", boardId=" + boardId +
+                ", restaurant='" + restaurant + '\'' +
                 '}';
     }
 }
