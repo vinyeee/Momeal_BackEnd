@@ -32,6 +32,7 @@ public class CartEntity extends BaseEntity{
             targetEntity = UserEntity.class,
             fetch = FetchType.LAZY
     )
+    @JoinColumn(name = "userid")
     private UserEntity userEntity;
 
 }

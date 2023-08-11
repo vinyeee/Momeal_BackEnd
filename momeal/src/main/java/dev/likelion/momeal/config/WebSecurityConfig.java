@@ -1,63 +1,31 @@
 package dev.likelion.momeal.config;
 
-
-import dev.likelion.momeal.service.CustomUserDetailsService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
-
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-    private final UserDetailsService userDetailsService;
-    private final CustomUserDetailsService customUserDetailsService;
+public class WebSecurityConfig {
 
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(this.userDetailsService);
 
-//        auth.inMemoryAuthentication()
-//                .withUser("user1")
-//                .password(passwordEncoder().encode("user1pass"))
-//                .roles("USER")
-//                .and()
-//                .withUser("admin1")
-//                .password(passwordEncoder().encode("admin1"))
-//                .roles("ADMIN")
-//        ;
-
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/home/**","/user/signup/**")//
-                .anonymous() // 익명사용자만
-                .anyRequest() // 나머지 url에 대해서는
-                .authenticated() // 권한이 있으면 접근 가능
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+        return httpSecurity
+                .httpBasic().disable()
+                .csrf().disable()
+                .cors().and()
+                .authorizeRequests()
+                .antMatchers("/user/login","/user/signup").permitAll()
                 .and()
-                .formLogin()
-                .loginPage("/user/login")
-                .defaultSuccessUrl("/home")
-                .permitAll()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .logout()
-                .logoutUrl("/user/logout")
-                .logoutSuccessUrl("/home")
-                .deleteCookies("JSEESIONID")
-                .invalidateHttpSession(true)
-                .permitAll() //접근해야하는 url(로그인페이지)들에 대해서 접근권한을 풀어줌
-        ;
+                .build();
     }
-
-
 }
-
